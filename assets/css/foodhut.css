@@ -1172,7 +1172,10 @@ pre code {
             flex: 0 0 33.33333%;
     max-width: 33.33333%;
   }
+  
   .col-md-5 {
+    display: flex;
+    justify-content: flex-start; 
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 41.66667%;
         -ms-flex: 0 0 41.66667%;
@@ -11020,6 +11023,7 @@ table, tr, td, th {
 }
 
 .testmonial-card {
+  text-align: left;
   position: relative;
   text-align: center;
 }

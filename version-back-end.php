@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with FoodHut landing page.">
+    <meta name="author" content="Devcrud">
+    <title>TGR-TANTAN</title>
+   
+    <!-- font icons -->
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+
+    <link rel="stylesheet" href="assets/vendors/animate/animate.css">
+
+    <!-- Bootstrap + FoodHut main styles -->
+	<link rel="stylesheet" href="assets/css/foodhut.css">
+    <link rel="stylesheet" href="Site.css">
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+<?php
+ $username = "Bouchta";
+ $password = "0000";
+ $database = new PDO("mysql:host=localhost; dbname=stage1;",$username,$password);
+ 
+  
+  if(isset($_POST['send'])){
+    $Prenom = $_POST['Prenom'];
+    $Nom = $_POST['Nom'];
+    $Email = $_POST['Email'];
+    $NTelephone = $_POST['NTelephone'];
+    $DateNaissance= $_POST['DateNaissance'];
+    $NiveauScolaire= $_POST['NiveauScolaire'];
+    $CIN_S= $_POST['CIN_S'];
+    $Specialites= $_POST['Specialites'];
+    $DateDebut= $_POST['DateDebut'];
+    $DateFin= $_POST['DateFin'];
+  $addData = $database->prepare("INSERT INTO formulaire1(Prenom,Nom,Email,NTelephone,DateNaissance,NiveauScolaire,CIN_S,Specialites,DateDebut,DateFin)
+  VALUES(:Prenom,:Nom,:Email,:NTelephone,:DateNaissance,:NiveauScolaire,:CIN_S,:Specialites,:DateDebut,:DateFin)");
+  
+  $addData->bindParam("Prenom",$Prenom);
+  $addData->bindParam("Nom",$Nom);
+  $addData->bindParam("Email",$Email);
+  $addData->bindParam("NTelephone",$NTelephone);
+  $addData->bindParam("DateNaissance",$DateNaissance);
+  $addData->bindParam("NiveauScolaire",$NiveauScolaire);
+  $addData->bindParam("CIN_S",$CIN_S);
+  $addData->bindParam("Specialites",$Specialites);
+  $addData->bindParam("DateDebut",$DateDebut);
+  $addData->bindParam("DateFin",$DateFin);
+  if($addData->execute()){echo"bien";}
+  else{
+    echo"bbb";
+  }
+}
+  ?>
+<?php
+
+ 
+  
+
+
+  if(isset($_POST['senda'])){
+    $CIN = $_POST['CIN'];
+    $Telephone = $_POST['Telephone'];
+    $Sujet = $_POST['Sujet'];
+    $Date1 = $_POST['Date1'];
+  $addData = $database->prepare("INSERT INTO rendezvous(CIN,Telephone,Sujet,Date1)
+  VALUES(:CIN,:Telephone,:Sujet,:Date1)");
+  
+  $addData->bindParam("CIN",$CIN);
+  $addData->bindParam("Telephone",$Telephone);
+  $addData->bindParam("Sujet",$Sujet);
+  $addData->bindParam("Date1",$Date1);
+  
+  if($addData->execute()){echo"bien";}
+  else{
+    echo"bbb";
+  }
+  
+}
+
+
+  ?>
+    
+      <!-- Navbar -->
+    <nav class="custom-navbar navbar navbar-expand-lg navbar-dark fixed-top" data-spy="affix" data-offset-top="10">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#Accueil">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#premiere-jour-tgr">13-OCT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.tgr.gov.ma/wps/portal">TGR</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#Rendez-vous">Rendez-vous</a>
+                </li>
+            </ul>
+            <a class="navbar-brand m-auto" href="#">
+                <img src="assets/imgs/logo3.png" class="brand-img" alt="">
+                <span class="brand-txt">TGR Tan-Tan</span>
+            </a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#Stage">Stage<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#Developpeurs">Développeurs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contactez</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#Rendez-vous" class="btn btn-primary ml-xl-4">Rendez-vous</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+     <!-- header -->
+    <header id="Accueil" class="header">
+        <div class="overlay text-white text-center">
+            <h1 class="display-2 font-weight-bold my-3">TGR DU MAROC</h1>
+            <h2 class="display-4 mb-5">la trésorerie Générale du Royaume</h2>
+            <a class="btn btn-lg btn-primary" href="#Stage">Trouvez votre Stage</a>
+        </div>
+    </header>
+
+    <!--  About Section  -->
+    <div id="premiere-jour-tgr" class="container-fluid wow fadeIn" id="premiere-jour-tgr"data-wow-duration="1.5s">
+        <div class="row">
+            <div class="col-lg-6 has-img-bg"></div>
+            <div class="col-lg-6">
+                <div class="row justify-content-center">
+                    <div class="col-sm-8 py-5 my-5" >
+                        <h2 class="mb-4">le 13 octobre </h2>
+                        <p >Le 13 octobre est le jour du lancement des services de notre site Web officiel. <br> <br>
+                            Ses services sont destinés à permettre au client de rechercher les stages
+                             disponibles à la TGR de Tantan et de les filtrer à celui de son choix.
+Le processus de confirmation se fait en appelant le candidat
+ du service client au TGR. <br><br>
+Notre site Web permet également au client de pré-réserver 
+un entretien avec X ou avec Y , avec la possibilité de choisir 
+l'heure et la date de la part le client et le processus de confirmation 
+se fait de la même manière. Et il a été créé dans le but de faciliter
+ le processus de communication entre la TGR de Tantan et les clients 
+ et de garantir que le processus se déroule dans les meilleures conditions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- book a table Section  -->
+    <div class="container-fluid has-bg-overlay text-center text-light has-height-lg middle-items" id="Rendez-vous">
+        <form class="formRendez" method="POST" >
+            <h2 class="section-title mb-5">Rendez-vous avec le trésorierai</h2>
+            <div class="row mb-5">
+                <div class="col-sm-6 col-md-3 col-xs-12 my-2">
+                    <input type="text" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="CIN" name="CIN" required>
+                </div>
+                <div class="col-sm-6 col-md-3 col-xs-12 my-2">
+                    <input type="number" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="Numéro de téléphone" name="Telephone" required>
+                </div>
+                <div class="col-sm-6 col-md-3 col-xs-12 my-2">
+                    <input type="text" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="Sujet" name="Sujet" required>
+                </div>
+                <div class="col-sm-6 col-md-3 col-xs-12 my-2">
+                    <input type="date" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="12/12/12" name="Date1" required>
+                </div>
+            </div>
+            
+           
+            <div class="btnRendez">
+                <center>
+                  <input type="submit" class="button" value="Envoyer"   name="senda"  STYLE="height:60px;        background-color: #FF214F;
+                  border: 1px solid  #FF214F;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        font-weight: 500;
+        font-size: 20px;
+        cursor: pointer;
+        width: 300px;
+        display: block;">
+        </center>
+                  </div>
+               </form>
+    </div>
+
+    <!-- BLOG Section  -->
+    <div id="Stage" class="container-fluid bg-dark text-light py-5 text-center wow fadeIn">
+        <h2 class="section-title py-5">S'inscrire pour votre Stage</h2>
+        <div class="gen">
+            <div class="container">
+  
+              <div class="content">
+               
+              <form method="POST"  actio="action">
+        <form  action="#" method="POST">
+                  <div class="user-details">
+                    <div class="input-box">
+                      <span class="details">Prenom</span>
+                      <input type="text" name="Prenom" placeholder="Entrez votre prenom"  required>
+                    </div>
+        
+                    <div class="input-box">
+                      <span class="details">Email</span>
+                    <div class="field email-field">           
+                        <input type="email" name="Email"  placeholder="Entez votre email" class="email" required/>
+                        <span class="error email-error">
+                        <i class="bx bx-error-circle error-icon"></i>
+                        <p class="error-text">Please enter a valid email</p>
+                      </span>
+                    </div>
+                  </div>
+        
+        
+        
+        
+                  <div class="input-box">
+                      <span class="details">Nom</span>
+                      <input type="text" name="Nom"  placeholder="Entrez votre nom" required>
+                    </div>
+                    
+        
+        
+    
+                  
+                    <div class="input-box">
+                      <span class="details">Numéro de téléphone</span>
+                      <input type="text" name="NTelephone"  placeholder="Entrez votre numéro" required>
+                    </div>
+                    
+                    <div class="input-box">
+                        <span class="details">Date de naissance</span>
+                        <div class="field create-password">
+                            <input
+                              type="Date"
+                              placeholder="Entrez votre Date de naissance "
+                               name="DateNaissance"
+                               required
+                              >
+                        </div>
+                      </div>
+           
+                    <div class="input-box">
+                    <span class="details">Niveau Scolaire</span>
+                    <select  id="pays" class="input" name="NiveauScolaire">
+                  <option >Bac+2</option>
+                  <option >Bac+3</option>
+                  <option >Bac+4</option>
+                  <option >Bac+5</option>
+                </select>
+                    </div>
+        
+        
+                    <div class="input-box">
+                        <span class="details">CIN</span>
+                        <input type="text" name="CIN_S"  placeholder="Entrez votre CIN" required>
+                        </div>
+        
+                    <div class="input-box">
+                      <span class="details">Spécialité</span>
+                      <input type="text" name="Specialites"  placeholder="Entrez votre Spécialité" required>
+                    </div>
+ 
+                        
+                        <div class="input-box">
+                            <span class="details">Date de Début</span>
+                            <div class="field create-password">
+                                <input
+                                  type="Date"
+                                  placeholder="Entrez votre Date de naissance "
+                                   name="DateDebut"
+                                   required
+                                  >
+                            </div>
+                          </div>
+                          <div class="input-box">
+                            <span class="details">Date de fin</span>
+                            <div class="field create-password">
+                                <input
+                                  type="Date"
+                                  placeholder="Entrez votre Date de naissance "
+                                   name="DateFin"
+                                   required
+                                  >
+                            </div>
+                          </div>
+ 
+
+            </div>
+
+        
+                  
+
+                  
+            <div class="btnRendez">
+                <center>
+                  <input type="submit" class="button" value="Envoyer"  name="send"  STYLE="height:60px;        background-color: #FF214F;
+        border: 1px solid  #FF214F;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        font-weight: 500;
+        font-size: 20px;
+        cursor: pointer;
+        width: 300px;
+        display: block;">
+        </center>
+                  </div>
+                  
+                </form>
+                </form>
+                
+              </div>
+            </div>
+          </div>
+
+    <!-- REVIEWS Section  -->
+    <div id="Developpeurs" class="container-fluid wow fadeIn bg-dark text-light has-height-lg middle-items">
+        <h2 class="section-title my-5 text-center">Développeurs</h2>
+     
+        
+        <div class="row mt-3 mb-5">
+            <div class="col-md-4 my-3 my-md-0">
+                <div class="testmonial-card">
+                    <h3 class="testmonial-title">Mohammed BOUCHTA</h3>
+                    <h6 class="testmonial-subtitle">Concepteur Web Design</h6>
+                    <div class="testmonial-body">
+                        <p>Spécialiste en Développement des systèmes d'information, Développeur et Concepteur Web Design </p>
+                    </div>
+                </div>
+            </div>
+       
+            <div class="col-md-4 my-3 my-md-0">
+                <div class="testmonial-card">
+                    <h3 class="testmonial-title">Yahya AYASS</h3>
+                    <h6 class="testmonial-subtitle">Designer Graphique</h6>
+                    <div class="testmonial-body">
+                        <p>Spécialiste en Développement des systèmes d'information, Programmeur d'applications informatiques</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+
+    <!-- CONTACT Section  -->
+    <div id="contact" class="container-fluid bg-dark text-light border-top wow fadeIn">
+        <div class="row">
+            <div class="col-md-6 px-0">
+                <div id="map" style="width: 100%; height: 100%; min-height: 400px"></div>
+            </div>
+            <div class="col-md-6 px-5 has-height-lg middle-items">
+                <h3>Contactez-nous</h3>
+                <div class="text-muted">
+                    <p><span class="ti-location-pin pr-3"></span> Boulevard bir anzarran hay Tigueria, Tan-Tan 82000</p>
+                    <p><span class="ti-support pr-3"></span> (+212) 600120014</p>
+                    <p><span class="ti-email pr-3"></span>Tgr-Tantan82000@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- page footer  -->
+    <div class="container-fluid bg-dark text-light has-height-md middle-items border-top text-center wow fadeIn">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3>Email</h3>
+                <P class="text-muted">Tgr-Tantan82000@gmail.com</P>
+            </div>
+            <div class="col-sm-4">
+                <h3>Appelez-nous</h3>
+                <P class="text-muted">(+212) 600120014</P>
+            </div>
+            <div class="col-sm-4">
+                <h3>Localisation</h3>
+                <P class="text-muted">Boulevard bir anzarran hay Tigueria, Tan-Tan 82000</P>
+            </div>
+        </div>
+    </div>
+    <div class="bg-dark text-light text-center border-top wow fadeIn">
+        <p class="mb-0 py-3 text-muted small">&copy;Trésorerie Générale du Royaume <script>document.write(new Date().getFullYear())</script>  par <a href="https://www.linkedin.com/in/mohamed-bouchta-93500616a"">BOUCHTA <a href="http://devcrud.com"> AYASS</a></p>
+    </div>
+    <!-- end of page footer -->
+
+	<!-- core  -->
+    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+
+    <!-- bootstrap affix -->
+    <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
+
+    <!-- wow.js -->
+    <script src="assets/vendors/wow/wow.js"></script>
+    
+    <!-- google maps -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtme10pzgKSPeJVJrG1O3tjR6lk98o4w8&callback=initMap"></script>
+
+    <!-- FoodHut js -->
+    <script src="assets/js/foodhut.js"></script>
+
+</body>
+</html>
